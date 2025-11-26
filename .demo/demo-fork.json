@@ -1,0 +1,185 @@
+{
+  "$schema": "https://demotime.show/demo-time.schema.json",
+  "title": "demo-fork",
+  "description": "",
+  "version": 2,
+  "demos": [
+    {
+      "id": "demo-mifgxp9c-mha3",
+      "title": "UC: Sync change to forked repo - Create .NET project",
+      "steps": [
+        {
+          "action": "executeTerminalCommand",
+          "command": "git checkout main; git pull; git branch -D features/QuanDo-PIV-init-project",
+          "insertTypingSpeed": 48
+        },
+        {
+          "action": "executeTerminalCommand",
+          "command": "git checkout -b features/QuanDo-PIV-init-project",
+          "insertTypingMode": "character-by-character",
+          "insertTypingSpeed": 50
+        },
+        {
+          "action": "executeTerminalCommand",
+          "command": "dotnet new console -n app",
+          "insertTypingMode": "character-by-character",
+          "insertTypingSpeed": 50
+        },
+        {
+          "action": "executeTerminalCommand",
+          "command": "git add . ; git commit -m 'UC: Sync change to forked repo - Create .NET project';  git push --set-upstream origin features/QuanDo-PIV-init-project;",
+          "insertTypingMode": "character-by-character",
+          "insertTypingSpeed": 50
+        }
+      ],
+      "icons": {
+        "start": "add",
+        "end": ""
+      }
+    },
+    {
+      "id": "demo-mick43kh-rp4l",
+      "title": "UC: Revert commit - Create commit",
+      "steps": [
+        {
+          "action": "executeTerminalCommand",
+          "command": "git checkout main; git pull; git branch -D features/QuanDo-PIV-revert-commit-1;"
+        },
+        {
+          "action": "executeTerminalCommand",
+          "command": "git checkout -b features/QuanDo-PIV-revert-commit-1;",
+          "insertTypingMode": "character-by-character",
+          "insertTypingSpeed": 50
+        },
+        {
+          "action": "insert",
+          "path": "app/Program.cs",
+          "content": "Console.WriteLine(\"UC: Revert commit\");\n",
+          "position": "3",
+          "insertTypingSpeed": 20,
+          "insertTypingMode": "character-by-character",
+          "highlightWholeLine": true
+        },
+        {
+          "action": "highlight",
+          "path": "app/Program.cs",
+          "position": "3",
+          "highlightWholeLine": true
+        },
+        {
+          "action": "executeTerminalCommand",
+          "command": "git add . ; git commit -m 'UC: Revert commit - Create commit' ; git push --set-upstream origin features/QuanDo-PIV-revert-commit-1;",
+          "autoExecute": true,
+          "insertTypingMode": "character-by-character",
+          "insertTypingSpeed": 10,
+          "disabled": false
+        }
+      ],
+      "icons": {
+        "start": "git-commit",
+        "end": "github"
+      }
+    },
+    {
+      "id": "demo-mifktgqu-xd9s",
+      "title": "UC: Revert commit - P2",
+      "steps": [
+        {
+          "action": "executeTerminalCommand",
+          "command": "git checkout main; git pull; git branch -D features/QuanDo-PIV-revert-commit-2;"
+        },
+        {
+          "action": "executeTerminalCommand",
+          "command": "git checkout -b features/QuanDo-PIV-revert-commit-2;",
+          "insertTypingMode": "character-by-character",
+          "insertTypingSpeed": 50
+        },
+        {
+          "action": "executeTerminalCommand",
+          "command": "git revert HEAD -m 1; git push --set-upstream origin features/QuanDo-PIV-revert-commit-2;",
+          "autoExecute": true,
+          "insertTypingMode": "character-by-character",
+          "insertTypingSpeed": 10,
+          "disabled": false
+        }
+      ],
+      "icons": {
+        "start": "git-commit",
+        "end": "github"
+      }
+    },
+    {
+      "id": "demo-mifmsjlf-9gge",
+      "title": "UC: Commited in forked repo without conflict",
+      "steps": [
+        {
+          "action": "executeTerminalCommand",
+          "command": "git checkout main; git pull; git branch -D features/QuanDo-PIV-no-conflict;"
+        },
+        {
+          "action": "executeTerminalCommand",
+          "command": "git checkout -b features/QuanDo-PIV-no-conflict;",
+          "insertTypingMode": "character-by-character",
+          "insertTypingSpeed": 50
+        },
+        {
+          "action": "insert",
+          "path": "app/Program.cs",
+          "content": "Console.WriteLine(\"UC: Commited in forked repo without conflict\");\nConsole.WriteLine(\"Today is: Wednesday, 26 November 2025!\");\n",
+          "position": "3",
+          "highlightWholeLine": true,
+          "insertTypingMode": "character-by-character",
+          "insertTypingSpeed": 20
+        },
+        {
+          "action": "executeTerminalCommand",
+          "command": "git add . ; git commit -m 'UC: Commited in forked repo without conflict' ; git push --set-upstream origin features/QuanDo-PIV-no-conflict;",
+          "autoExecute": true,
+          "insertTypingMode": "character-by-character",
+          "disabled": false,
+          "insertTypingSpeed": 10
+        }
+      ],
+      "icons": {
+        "start": "git-commit",
+        "end": "github"
+      }
+    },
+    {
+      "id": "demo-mifmjk49-aows",
+      "title": "UC: Commited in forked repo with conflict",
+      "steps": [
+        {
+          "action": "executeTerminalCommand",
+          "command": "git checkout main; git pull; git branch -D features/QuanDo-PIV-conflict;"
+        },
+        {
+          "action": "executeTerminalCommand",
+          "command": "git checkout -b features/QuanDo-PIV-conflict;",
+          "insertTypingMode": "character-by-character",
+          "insertTypingSpeed": 50
+        },
+        {
+          "action": "replace",
+          "path": "app/Program.cs",
+          "content": "Console.WriteLine(\"Thursday, 27 November 2025!\");\n",
+          "position": "4",
+          "insertTypingSpeed": 20,
+          "insertTypingMode": "character-by-character"
+        },
+        {
+          "action": "executeTerminalCommand",
+          "command": "git add . ; git commit -m 'UC: Commited in forked repo with conflict' ; git push --set-upstream origin features/QuanDo-PIV-conflict;",
+          "autoExecute": true,
+          "insertTypingMode": "character-by-character",
+          "disabled": false,
+          "insertTypingSpeed": 10
+        }
+      ],
+      "icons": {
+        "start": "git-commit",
+        "end": "github"
+      }
+    }
+  ]
+}
